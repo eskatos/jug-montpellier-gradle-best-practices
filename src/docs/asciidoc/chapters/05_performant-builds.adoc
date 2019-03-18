@@ -8,45 +8,192 @@ image::compiling.png[width=50%, height=50%]
 Tout le monde veut un build qui va vite™
 
 
-=== La base
+=== Avant tout
 
 // [%step]
 * Utilisez les dernières version de JVM et de Gradle
-** améliorations de performance
-* Activez `--parallel`
-** `org.gradle.parallel=true`
-* Activez `--build-cache`
-** `org.gradle.caching=true`
+* Donnez assez de mémoire à Gradle
+* Le tuning de JVM et ses flags obscurs font souvent plus de mal qu'autre chose
+* Prenez plutôt le temps de faire des améliorations structurelles
+* Activez `--parallel` (`org.gradle.parallel=true`)
+* Activez `--build-cache` (`org.gradle.caching=true`)
 
 
-=== Configuration vs. Execution
+=== Mesurer, fixer, mesurer ...
 
-* Configuration vs. Execution
-** It's a trap!
-** Fixed cost on each invocation
-** Ne rien faire de coûteux à la configuration
-** Move expensive things to execution
-** e.g. git commands, dependency resolution etc..
+Ou comment ne pas optimiser à l'aveugle
 
-=== Tasks
+// [%step]
+* Identifiez vos cas d'utilisation
+* Automatiser vos mesures
+* Identifiez le goulet d'étranglement principal
+* Fixez le goulet
+* Vérifiez le fix en mesurant de nouveau
+* Répéter
 
-* UP_TO_DATE vs. FROM_CACHE vs. INCREMENTAL
-* `@Input*`, `@Output*` etc..
-* `@CacheableTask`, `@PathSensitivity` etc..
-* Traps! (timestamps, line separators)
+=== Automatisez vos mesures
 
-=== Parallel execution
+link:https://github.com/gradle/gradle-profiler[github.com/gradle/gradle-profiler]
+
+```
+configurationTime {
+    tasks = ["help"]
+}
+cleanBuild {
+    tasks = ["build"]
+    cleanup-tasks = ["clean"]
+}
+cachedCleanBuild {
+    tasks = ["build"]
+    cleanup-tasks = ["clean"]
+    gradle-args = ["--build-cache"]
+}
+```
+
+
+=== Où est le problème ?
+
+// [%step]
+* Commencez par observer un build
+** `gradle --scan` ou `gradle --profile`
+
+image::blank.png[width=60%, height=60%]
+
+=== Où est le problème ?
+
+* Commencez par observer un build
+** `gradle --scan` ou `gradle --profile`
+
+image::lifecycle.png[width=60%, height=60%]
+
+
+=== Signes évidents de problèmes
+
+// [%step]
+* Startup/buildSrc/Settings > 1s
+* Temps de configuration > 10ms/projet
+* Changer une ligne de code ~= `clean build`
+* Un build censé être un NO-OP qui fait quelque chose
+* Long temps de GC (Garbage Collection)
+
+
+=== Optimiser la configuration
+
+// [%step]
+* Quoi ?
+** Application les plugins
+** Evaluation les scripts de build
+** Execution les callbacks (e.g. `afterEvaluate {}`)
+* Quand ?
+** `gradle help` ou `gradle tasks`
+** Synchronisation d'un IDE
+** à chaque invocation, c'est un coût fixe!
+
+=== Optimiser la configuration
+
+Principales causes de lenteur
+
+* Résolution de dépendances à la configuration
+* I/O à la configuration
+* Plugins inefficaces
+* Logique répetée
+
+[background-color="#02303A"]
+=== Optimiser la configuration
+
+En pratique!
+
+
+=== Optimiser la configuration
+
+Conseils structurels
+
+* utilisez `buildSrc`
+* compilez statiquement votre logique de build
+* gardez vos scripts de build déclaratifs
+
+=== Optimiser la configuration
+
+Optimisez les algorithmes
+
+image::flames.png[width=80%, height=80%]
+
+
+`gradle-profiler --profile async-profiler`
+
+
+=== Optimiser l'execution
+
+// [%step]
+* Execution des tâches
+** UP_TO_DATE
+** FROM_CACHE
+** Incremental inputs
+** Parallélisme et Worker API
+
+
+=== Builds incrémentaux
+
+image::perf-incremental.png[width=80%, height=80%]
+
+Si rien n'a changé, *aucune* tâche ne devrait être executée
+
+=== Builds incrémentaux
+
+image::perf-volatile-inputs.png[width=80%, height=80%]
+
+Trouvez les inputs volatiles
+
+
+=== UUID anyone?
+
+```kotlin
+tasks.jar {
+    manifest {
+        attribute("Build-ID", UUID.randomUUID().toString())
+    }
+}
+```
+
+Les identifiants uniques ou timestamps sont à proscrire pour des builds reproductibles et performants!
+
+=== Gradle Build Cache
+
+TDB
+
+* Traps! (line separators)
+
+=== Execution parallèle
+
+TDB
 
 * Parallelism & safety
 * `--parallel`
 * Worker API
 
-=== Dependency resolution
+=== Compilation plus rapide
 
-* Dependency resolution
-** Dynamic versions & locking
-** Repositories
-*** As few as possible
-*** Filtering repositories content
-*** no `mavenLocal()`
+// [%step]
+* Modularisation
+** => Compilation avoidance on non-abi change
+** => Parallélisation
+* Code découplé
+** => Compilation incrémentale plus efficace
+* Processeurs d'annotations
+** => Vérifiez bien qu'ils soient incrémentaux
 
+=== Résolution de dépendances
+
+* Dynamic versions & locking
+* Repositories
+** As few as possible
+** Filtering repositories content
+** no `mavenLocal()`
+
+=== Surveiller la performance du build
+
+* Pour qu'elle ne regresse pas
+* L'intégration continue peut alerter, voir fournir des tabeaux de bords
+* Gradle Enterprise fourni des solutions dédiées à la gestion de la performance du build
+
+image::perf-volatile-inputs.png[width=80%, height=80%]
