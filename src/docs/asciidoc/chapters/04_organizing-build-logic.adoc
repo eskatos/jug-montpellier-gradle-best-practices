@@ -12,6 +12,7 @@
 * extraire une convention
 ** vers le projet racine
 ** vers un plugin dans buildSrc
+** modeler le DSL (extension & configuration de tâches)
 
 * tester la logique de build
 ** buildSrc
@@ -26,4 +27,3 @@
 ** mono-build vs. multi-builds
 ** included build
 ** included build logic
-

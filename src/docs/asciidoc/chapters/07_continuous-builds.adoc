@@ -5,5 +5,5 @@
 
 * ne désactivez pas le démon Gradle
 * agents éphemères == pas de démon
-* ne partagez pas `~.gradle/`, utilisez plutôt un repo
+* ne partagez pas `~.gradle/caches`, utilisez plutôt un repo
 

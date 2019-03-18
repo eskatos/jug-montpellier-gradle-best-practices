@@ -4,4 +4,6 @@
 === Maintenir et faire évoluer des builds
 
 * You want tests!
+* Progressive refactoring towards best practices
 * Groovy vs. Kotlin
+

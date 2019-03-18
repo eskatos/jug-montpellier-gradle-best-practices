@@ -28,16 +28,17 @@ Tout le monde veut un build qui va vite™
 ** Move expensive things to execution
 ** e.g. git commands, dependency resolution etc..
 
-=== UP_TO_DATE vs. incremental vs. FROM_CACHE
+=== Tasks
 
-* Tasks
-** UP_TO_DATE
-** FROM_CACHE
-** Traps! (timestamps, line separators)
+* UP_TO_DATE vs. FROM_CACHE vs. INCREMENTAL
+* `@Input*`, `@Output*` etc..
+* `@CacheableTask`, `@PathSensitivity` etc..
+* Traps! (timestamps, line separators)
 
 === Parallel execution
 
 * Parallelism & safety
+* `--parallel`
 * Worker API
 
 === Dependency resolution
