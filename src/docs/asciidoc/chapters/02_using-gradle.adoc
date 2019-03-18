@@ -1,0 +1,80 @@
+[background-color="#02303A"]
+== Comment se sert-on de Gradle ?
+
+=== Comment se sert-on de Gradle ?
+
+// [%step]
+* en ligne de commande
+* en intégration continue
+* depuis un IDE
+* via une API
+
+
+=== `gradle build`
+
+// [%step]
+* Gradle est avant tout un *outil en ligne de commande*
+* `USAGE: gradle [option...] [task...]`
+* Un client qui démarre et réutilise un démon
+** performance: JVM JIT & caches mémoire
+* Un wrapper enregistré dans le dépôt de sources
+** Version de l'outil de construction fixée
+** Pas besoin d'installation, seulement d'une JVM
+** `git clone foo && cd foo && ./gradlew build`
+
+
+=== Intégration Continue
+
+Les services d'intégration continue executent Gradle, tout simplement.
+Certains d'entre eux fournissent des fonctionnalités supplémentaires en consommant les résulats de construction:
+
+* sortie console,
+* résultats d'execution de tests (xUnit, coverage etc..),
+* URL du Build Scan,
+* etc ...
+
+Quelques guides pour link:https://guides.gradle.org/executing-gradle-builds-on-jenkins/[Jenkins], link:https://guides.gradle.org/executing-gradle-builds-on-travisci/[Travis], link:https://guides.gradle.org/executing-gradle-builds-on-teamcity/[TeamCity].
+
+
+=== IDE => Gradle
+
+// [%step]
+* Certains IDEs supportent Gradle nativement
+* On importe un build Gradle directement dans l'IDE
+** IntelliJ IDEA, CLion, Eclipse, Netbeans
+** mais aussi les Language Servers (LSP)
+* L'IDE interroge Gradle pour obtenir le modèle du build
+** les sets de sources, leurs dépendances etc..
+** les tâches disponibles
+** la configuration de l'IDE
+
+
+=== Gradle => IDE
+
+Pour d'autres IDE qui ne fonctionnent qu'à partir de fichiers de configuration, Gradle peut générer ceux-ci.
+
+* IntelliJ IDEA et Eclipse (déprécié en faveur de l'import)
+* Visual Studio
+* XCode
+
+
+=== Le build configure l'IDE
+
+Dans tous les cas, l'objectif est de configurer l'IDE
+
+// [%step]
+* depuis le build
+* depuis le dépôt de sources
+* pour tout le monde pareil
+* sans configuration manuelle
+
+
+=== Tooling API
+
+Il est également possible de piloter Gradle via une api, la Tooling API.
+
+C'est ce que les IDE permettant l'import de builds Gradle utilisent.
+
+link:https://docs.gradle.org/current/userguide/embedding.html[docs.gradle.org/current/userguide/embedding.html]
+
+// * `gradle tasks` pour découvrir les tâches proposées par un build

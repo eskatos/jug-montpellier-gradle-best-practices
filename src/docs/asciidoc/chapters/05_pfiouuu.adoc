@@ -1,0 +1,68 @@
+[background-color="#02303A"]
+== Pfiouuuuu
+
+=== Pfiouuuuu
+
+Mais, j'ai déjà assez à faire avec le code de production! et c'est sans compter les tests unitaires, d'intégration, fonctionnels, bariolés ...
+
+OUI ... MAIS
+
+// [%step]
+* Qui doit s'occuper du build ?
+* Qui se sert du build ?
+// [%step]
+** Tout le monde
+** `@dev`, `@ide`, `@ci`, `@qa`, `@ops` etc...
+** Le produit du build c'est ce qui va en prod
+** => `@users`
+
+=== Pfiouuuuuu
+
+Qui doit s'occuper du build ?
+
+// [%step]
+* Projet solo
+** C'est bibi !
+* Projet en équipe(s)
+** Tout le monde, éventuellement un build-master/team
+* Grandes organisations
+** Idéalement un build-master ou une build-team, pour l'uniformité et la réutilisation
+* YMMV - Mais il faut s'en occuper
+
+=== Pfiouuuuuu
+
+Et puis ...
+
+// [%step]
+* Je peux automatiser n'importe quoi
+// [%step]
+** Générer des trucs et des machins
+** Les envoyer dans les nuages
+** Interagir avec des APIs
+** Déployer sur les ordinateurs d'un autre (aka. le Cloug™)
+* Le build c'est aussi un bon moyen de rapprocher les Devs des Ops (hein?)
+
+[transition=none]
+[background-image="troll.jpg"]
+=== Pfiouuuuuu
+
+Et puis ...
+
+* Je peux automatiser n'importe quoi
+** Générer des trucs et des machins
+** Les envoyer dans les nuages
+** Interagir avec des APIs
+** Déployer sur les ordinateurs d'un autre (aka. le Cloug™)
+* Le build c'est aussi un bon moyen de rapprocher les Devs des Ops (hein?)
+
+
+=== Pfiouuuuuu
+
+// [%step]
+* Le build c'est un peu comme les tests
+* S'en occuper, c'est rendre service à son futur soi/utilisateur
+* Si le build est bien fait et testé
+** Je peux le faire évoluer facilement
+** Je ne le casse pas sans m'en rendre compte
+* Si le build est maintenu performant, je ne perds pas de temps
+

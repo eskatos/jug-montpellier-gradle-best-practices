@@ -1,0 +1,29 @@
+[background-color="#02303A"]
+== Organiser la logique de build
+
+=== Organiser la logique de build
+
+* organiser la logique de build
+** un build, une hierarchie de projets
+** settings
+** buildSrc
+** init scripts
+
+* extraire une convention
+** vers le projet racine
+** vers un plugin dans buildSrc
+
+* tester la logique de build
+** buildSrc
+** ProjectBuilder / TestKit
+
+* partager la logique de build
+** extraire dans un autre build
+** publier
+
+* composite builds
+** mono-repo vs. multi-repo
+** mono-build vs. multi-builds
+** included build
+** included build logic
+

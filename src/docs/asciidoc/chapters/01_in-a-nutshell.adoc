@@ -1,0 +1,79 @@
+[background-color="#02303A"]
+== Gradle en quelques points clés
+
+=== Gradle en quelques points clés
+
+// [%step]
+* Scripts de build en Kotlin et Groovy
+* Configuration et execution de tâches
+* Résolution de dépendances
+* Éviter le répéter travail
+
+image::gradle-task-dag.png[height=350px]
+
+[transition=none]
+=== Gradle Plugins
+
+// [%step]
+* Core Plugins (`java`, `jacoco`, `maven-publish` ...)
+* Community Plugins (`kotlin`, `android`, `golang`, `docker`, `asciidoctor` ...)
+
+image::gradle-task-dag.png[height=350px]
+
+
+[transition=none]
+=== Gradle Plugins
+
+* Des plugins Gradle contribuent
+// [%step]
+** des tâches configurables et réutilisables
+** des extensions Gradle configurables
+
+image::gradle-task-dag.png[height=350px]
+
+
+[transition=none]
+=== Gradle Plugins
+
+* Des plugins Gradle contribuent *un modèle à configurer*
+// [%step]
+** dans les scripts de build
+** en utilisant un DSL
+
+image::gradle-task-dag.png[height=350px]
+
+
+=== A Java library
+
+[source,groovy]
+----
+plugins {
+   `java-library`
+}
+
+dependencies {
+   api("com.acme:foo:1.0")
+   implementation("com.zoo:monkey:1.1")
+}
+
+tasks.withType<JavaCompile> {
+    // ...
+}
+----
+
+=== A native app
+
+[source,groovy]
+----
+plugins {
+    `cpp-application`
+}
+
+application {
+    baseName = "my-app"
+}
+
+toolChains {
+    // ...
+}
+----

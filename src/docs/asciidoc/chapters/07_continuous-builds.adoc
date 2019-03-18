@@ -1,0 +1,9 @@
+[background-color="#02303A"]
+== Intégration continue
+
+=== Intégration continue
+
+* ne désactivez pas le démon Gradle
+* agents éphemères == pas de démon
+* ne partagez pas `~.gradle/`, utilisez plutôt un repo
+

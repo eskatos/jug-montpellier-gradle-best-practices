@@ -10,78 +10,113 @@ ifndef::sourcedir[:sourcedir: ../java]
 :title-slide-transition-speed: fast
 :icons: font
 
-= : Switching to Gradle
+= : Gradle Build Tool
 
 +++<h2>+++
-Maturity, performance and pleasure!
+Pièges et bonnes pratiques
 +++</h2>+++
 
-Cédric Champeau (@CedricChampeau) & Louis Jacomet (@ljacomet) - Gradle Inc.
+Paul Merlin (@eskat0s) - Gradle Inc.
 
-== Who are we?
+== Qui suis-je ?
 
-[%notitle]
-=== Cedric
-[source,groovy]
+[source,kotlin]
 ----
 speaker {
-    name 'Cédric Champeau'
-    company 'Gradle Inc'
-    oss 'Apache Groovy committer',
-    successes 'Static type checker',
-              'Static compilation',
-              'Traits',
-              'Markup template engine',
-              'DSLs'
-        failures Stream.of(bugs),
-        twitter '@CedricChampeau',
-        github 'melix',
-        extraDescription '''Groovy in Action 2 co-author
-Misc OSS contribs'''
+    name = "Paul Merlin"
+    company = "Gradle Inc."
+    locations = setOf("Montpellier, France", "Cevennes <3")
+    oss  = "Apache Polygene PMC, former chair"
+    successes = listOf(
+        "BASIC 'Hello, World!' in 1986",
+        "C 'Hello, World!' in 1989",
+        "Java 'Hello, World!' in 1996"
+        "Kotlin 'Hello, World!' in 2015",
+        "tools", "daemons", "apps", "frameworks", "libs"
+    ),
+    failures = generateSequence(code) { bugs },
+    twitter = "@eskat0s",
+    github = "eskatos"
 }
 ----
 
+
+== Qui êtes-vous ?
+
+// [%step]
+* Qui a déjà utilisé un build Gradle ?
+* Qui a déjà modifié/écrit un build Gradle ?
+// TODO add more
+
+[background-color="#02303A"]
+== Agenda
+
+* Gradle, c'est quoi ?
+* Hello Gradle World!
+* Organiser la logique de build
+* Des builds performants
+* Maintenir et faire évoluer des builds
+* Intégration continue
+
+
+include::chapters/00_about-gradle.adoc[]
+include::chapters/01_in-a-nutshell.adoc[]
+include::chapters/02_using-gradle.adoc[]
+include::chapters/03_hello-gradle.adoc[]
+include::chapters/04_organizing-build-logic.adoc[]
+
+[background-color="#02303A"]
+== Interlude
+
+include::chapters/05_pfiouuu.adoc[]
+include::chapters/05_performant-builds.adoc[]
+include::chapters/06_maintain-refactor.adoc[]
+include::chapters/07_continuous-builds.adoc[]
+
+
+[background-color="#02303A"]
+== En résumé
+
+// [%step]
+* le build ce n'est pas sale
+* le build ce n'est pas sale
+* le build ce n'est pas sale
+
+[transition=none]
+[background-color="#02303A"]
+== En résumé
+
+// [%step]
+* le build c'est de l'automatisation
+* et l'automatisation c'est la vie (de développeur)
+* tout comme pour le code de production, il faut
+** connaître ses outils
+** tester
+** maintenir
+* *Gradle c'est bien™*
+
+[background-color="#02303A"]
+== Questions
+
+Gradle::
+link:https://gradle.org/[gradle.org]
+Slides::
+link:https://eskatos.github.io/jug-montpellier-gradle-best-practices[eskatos.github.io/jug-montpellier-gradle-best-practices]
+Documentation::
+link:https://docs.gradle.org/[docs.gradle.org]
+Issue tracker::
+link:https://github.com/gradle/gradle/issues[github.com/gradle/gradle/issues]
+Slack::
+link:https://join.slack.com/t/gradle-community/shared_invite/enQtNDE3MzAwNjkxMzY0LTYwMTk0MWUwN2FiMzIzOWM3MzBjYjMxNWYzMDE1NGIwOTJkMTQ2NDEzOGM2OWIzNmU1ZTk5MjVhYjFhMTI3MmE[lien d'invitation]
+On recrute !::
+link:https://gradle.com/careers/[gradle.com/careers]
+
+
+[background-image="outro.jpeg"]
 [%notitle]
-=== Louis
-[source,groovy]
-----
-speaker {
-    name 'Louis Jacomet'
-    company 'Gradle Inc'
-    past 'Terracotta / Ehcache',
-              'Freelance consultant',
-        failures Stream.of(bugs),
-        twitter '@ljacomet',
-        github 'ljacomet',
-        extraDescription '''Not fully figured out
-how to stay out of management?!?'''
-}
-----
+== Merci
 
-include::chapters/about-gradle.adoc[]
 
-== A screencast
-
-screencast:step1[]
-
-== Conclusion
-
-=== Gradle Enterprise
-
-* On premise build cache and build scan solution
-* Out of the box solution for distributed build cache
-* Improved build scan feature set
-** Searchable build history
-** Build comparison
-
-=== Sessions at Devoxx BE
-
-* https://dvbe18.confinabox.com/talk/DBF-1594/project_versioning_like_a_git[Project versioning like a git]
-** Matthieu Brouillard
-** Wednesday, 13:30 - 13:45 Room 5
-
-* https://dvbe18.confinabox.com/talk/VFH-6802/Improving_Android_Build_Performance[Improving Android Build performance]
-** Cédric Champeau
-**  Thursday, 16:30 - 17:15 Room 3
-
+// == A screencast
+// screencast:step1[]
 

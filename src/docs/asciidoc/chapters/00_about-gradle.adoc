@@ -1,0 +1,85 @@
+[background-color="#02303A"]
+== Gradle, c'est quoi ?
+
+=== Gradle, c'est quoi ?
+
+Gradle est un outil de construction et d'automatisation.
+
+// [%step]
+* Gradle Build Tool
+* Tourne sur une JVM
+* Implémenté en Java
+* Apache License 2.0
+
+
+=== Agnostique de l'écosystème
+
+// [%step]
+* Écosystème JVM
+** Java, Kotlin, Groovy, Scala, Clojure ...
+* Écosystème natif
+** C, C++, Swift, ...
+* Android
+* Et bien d'autres
+** JavaScript, Python, Go, Rust, Asciidoctor, Docker ...
+
+
+=== Gradle en quelques chiffres
+
+// [%step]
+* >7.0M téléchargements par mois
+* https://techcrunch.com/2017/04/07/tracking-the-explosive-growth-of-open-source-software/[#17 Projet Open Source]
+* 35+ ingénieurs Gradle
+* 300K constructions par semaine @LinkedIn
+
+=== Gradle Inc.
+
+La compagnie derrière Gradle.
+
+// [%step]
+* "Build Happiness"
+* Emploie des ingénieurs à plein temps
+* Produit aussi Gradle Enterprise
+* (Gradle consulting, support, service etc.)
+* (Training: online, public and in-house)
+
+=== Gradle Enterprise
+
+// [%step]
+* Deux fonctionnalités clés
+* *Build Scans* enregistrement partageable d'une construction
+* *Build Cache* réutilisation des constructions
+* Pour le *Gradle* Build Tool
+* et maintenant aussi pour *Maven*!
+* Installation sur site, cache distribué, historique des constructions, dashboards, export API etc...
+
+=== Build Scans gratuits en SaaS
+
+// [%step]
+* link:https://scans.gradle.com/[scans.gradle.com]
+* Déjà utilisé par plein de projets open-source
+
+=== Et le Build Cache ?
+
+// [%step]
+* Le Build Cache local est intégré à Gradle en Open Source
+** link:https://docs.gradle.org/current/userguide/build_cache.html[`gradle --build-cache`]
+* Image docker d'un noeud de service Build Cache, non distribué
+** link:https://docs.gradle.com/build-cache-node/[`gradle/build-cache-node:latest`]
+
+=== Gradle recrute!
+
+* Une équipe de développement totalement distribuée
+* Un projet intéressant utilisé par des millions
+* Des positions dans l'équipe Build Tool et Gradle Enterprise
+
+Si ce qui suit est un problème intéressant à résoudre à vos yeux,
+
+* https://gradle.com/careers/
+* ou parlez moi à la pause :-)
+
+
+// [background-image="gradle-map.png"]
+// [%notitle]
+// == Gradle Map
+

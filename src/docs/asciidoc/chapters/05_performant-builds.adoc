@@ -1,0 +1,51 @@
+[background-color="#02303A"]
+== Des builds performants
+
+=== Des builds performants
+
+image::compiling.png[width=50%, height=50%]
+
+Tout le monde veut un build qui va vite™
+
+
+=== La base
+
+// [%step]
+* Utilisez les dernières version de JVM et de Gradle
+** améliorations de performance
+* Activez `--parallel`
+** `org.gradle.parallel=true`
+* Activez `--build-cache`
+** `org.gradle.caching=true`
+
+
+=== Configuration vs. Execution
+
+* Configuration vs. Execution
+** It's a trap!
+** Fixed cost on each invocation
+** Ne rien faire de coûteux à la configuration
+** Move expensive things to execution
+** e.g. git commands, dependency resolution etc..
+
+=== UP_TO_DATE vs. incremental vs. FROM_CACHE
+
+* Tasks
+** UP_TO_DATE
+** FROM_CACHE
+** Traps! (timestamps, line separators)
+
+=== Parallel execution
+
+* Parallelism & safety
+* Worker API
+
+=== Dependency resolution
+
+* Dependency resolution
+** Dynamic versions & locking
+** Repositories
+*** As few as possible
+*** Filtering repositories content
+*** no `mavenLocal()`
+

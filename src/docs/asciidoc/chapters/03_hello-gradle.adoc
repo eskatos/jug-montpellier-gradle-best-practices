@@ -1,0 +1,62 @@
+[background-color="#02303A"]
+== Hello Gradle World!
+
+=== Hello Gradle World!
+
+// [%step]
+* créer un nouveau build
+* ajouter des tâches
+* interagir avec le build
+
+=== Créer un nouveau build
+
+// [%step]
+* https://gradle-initializr.cleverapps.io/
+* `gradle init --dsl=kotlin`
+
+=== Ajouter des tâches
+
+```kotlin
+// settings.gradle.kts
+rootProject.name = "hello-gradle"
+```
+```kotlin
+// build.gradle.kts
+tasks {
+
+    val generated = layout.buildDirectory.file("generated.txt")
+
+    val createFile by registering {
+        outputs.file(generated)
+        doLast {
+            generated.parentFile.mkdirs()
+            generated.writeText("Hello, Gradle World!")
+        }
+    }
+
+    register("displayFile") {
+        dependsOn(createFile)
+        doLast {
+            println(generated.readText())
+        }
+    }
+}
+```
+
+=== Interagir avec le build
+
+* CLI
+* IDE
+
+=== Configuration vs. Execution
+
+image::itsatrap.jpg[width=75%,height=75%]
+
+
+=== Fondamentaux
+
+* configuration vs. execution
+* `gradle tasks`
+* `gradle help --task <taskName>`
+* `base` plugin
+

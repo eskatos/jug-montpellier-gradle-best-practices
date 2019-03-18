@@ -3,6 +3,6 @@ plugins {
 }
 
 presentation {
-    githubUserName.set("melix")
-    githubRepoName.set("gradle-presentation-template")
+    githubUserName.set("eskatos")
+    githubRepoName.set("jug-montpellier-gradle-best-practices")
 }
