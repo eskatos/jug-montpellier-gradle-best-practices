@@ -12,7 +12,11 @@
 
 // [%step]
 * https://gradle-initializr.cleverapps.io/
-* `gradle init --dsl=kotlin`
+* `gradle init`
+
+=== `gradle init`
+
+screencast:hello-gradle[]
 
 === Ajouter des tâches
 

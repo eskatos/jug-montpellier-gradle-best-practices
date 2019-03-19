@@ -161,15 +161,20 @@ Les identifiants uniques ou timestamps sont à proscrire pour des builds reprodu
 
 TDB
 
-* Traps! (line separators)
+* Traps!
+** inputs volatiles (identifiants uniques, timestamps, ordre non stable)
+** chemins absolus
+** line separators
 
 === Execution parallèle
 
-TDB
+Éxecution sérielle
 
-* Parallelism & safety
-* `--parallel`
-* Worker API
+image::perf-serial.png[width=80%, height=80%]
+
+Éxecution parallèle
+
+image::perf-parallel.png[width=80%, height=80%]
 
 === Compilation plus rapide
 
@@ -196,4 +201,4 @@ TDB
 * L'intégration continue peut alerter, voir fournir des tabeaux de bords
 * Gradle Enterprise fourni des solutions dédiées à la gestion de la performance du build
 
-image::perf-volatile-inputs.png[width=80%, height=80%]
+image::perf-dashboard.png[width=80%, height=80%]

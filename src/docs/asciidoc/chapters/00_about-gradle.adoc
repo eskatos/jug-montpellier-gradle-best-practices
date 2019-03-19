@@ -36,7 +36,6 @@ Gradle est un outil de construction et d'automatisation.
 
 La compagnie derrière Gradle.
 
-// [%step]
 * "Build Happiness"
 * Emploie des ingénieurs à plein temps
 * Produit aussi Gradle Enterprise
@@ -46,18 +45,23 @@ La compagnie derrière Gradle.
 === Gradle Enterprise
 
 // [%step]
-* Deux fonctionnalités clés
-* *Build Scans* enregistrement partageable d'une construction
-* *Build Cache* réutilisation des constructions
-* Pour le *Gradle* Build Tool
-* et maintenant aussi pour *Maven*!
+* Produit commercial - Productivité des développeurs
+* *Build Scans*
+** enregistrement persistent et partageable
+** de ce qui s'est passé pendant un build
+* *Build Cache*
+** réutilisation des outputs de build
 * Installation sur site, cache distribué, historique des constructions, dashboards, export API etc...
+
+=== Gradle Enterprise
+
+image::gradle-enterprise.png[width=80%, height=80%]
 
 === Build Scans gratuits en SaaS
 
-// [%step]
 * link:https://scans.gradle.com/[scans.gradle.com]
 * Déjà utilisé par plein de projets open-source
+* `gradle --scan`
 
 === Et le Build Cache ?
 
