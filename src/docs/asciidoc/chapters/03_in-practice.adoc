@@ -33,7 +33,7 @@ screencast:hello-gradle[]
 *** `gradle tasks`
 *** `gradle help --task <taskName>`
 ** Extensions
-* cycle de vie du build
+* cycle de vie du build + init script
 * configuration vs. execution
 --
 
@@ -47,6 +47,16 @@ screencast:hello-gradle[]
 === Configuration vs. Execution
 
 image::itsatrap.jpg[width=75%,height=75%]
+
+
+=== Cycle de vie d'un build
+
+// [%step]
+* Démarrage
+* Initialisation
+* Settings
+* Configuration des Projets
+* Execution
 
 
 [background-color="#02303A"]
@@ -83,7 +93,8 @@ image::itsatrap.jpg[width=75%,height=75%]
 // [%step]
 * Séparer un gros build en plusieurs petits
 * Différentes équipes, cycle de livraison différent etc...
-* Mono-repo vs. Multi-repo
+* Mono-repo vs. multi-repo
+* Mono-build vs. multi-builds
 
 [background-color="#02303A"]
 === Plein de builds

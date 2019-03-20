@@ -3,33 +3,101 @@
 
 === Organiser la logique de build
 
-TODO
+==== Pourquoi ?
+
+// [%step]
+* Beaucoup de logique de build dans les scripts
+** Maintenabilité :-(
+** Réutilisation :-(
+* Extraire des conventions
+** Maintenabilité :-)
+** Réutilisation :-)
+
+
+=== Organiser la logique de build
+
+==== Comment ?
+
+// [%step]
+* En extrayant du code pour qu'il soit réutilisable
+* Refactoring typique
+* Extraire vers des plugins Gradle réutilisables
+* et configurables si besoin
+
+
+=== Cycle de vie d'un build
+
+==== Rappel
+
+// [%step]
+* Démarrage
+* Initialisation (& plugins)
+* Settings (& plugins)
+* Configuration des Projets (& plugins)
+* Execution
 
 [.notes]
 --
-* organiser la logique de build
-** un build, une hierarchie de projets
-** settings
-** buildSrc
-** init scripts
-
-* extraire une convention
-** vers le projet racine
-** vers un plugin dans buildSrc
-** modeler le DSL (extension & configuration de tâches)
-
-* tester la logique de build
-** buildSrc
-** ProjectBuilder / TestKit
-
-* partager la logique de build
-** extraire dans un autre build
-** publier
-
-* composite builds
-** mono-repo vs. multi-repo
-** mono-build vs. multi-builds
-** included build
-** included build logic
+* STARTUP Client démarre et requiert un démon
+* INIT Evaluation des init scripts
+* SETTINGS Composite Builds, Source Dependencies, Projets
+* PROJETS Evaluation des scripts, application des plugins, configuration du modèle des Projets
+* EXECUTION Unités de travail: Tâches et Transformations
 --
+
+
+=== Organiser un build
+
+==== Avec `buildSrc`
+
+// [%step]
+* Chaque build a, par convention, un build inclu pour sa logique de build
+* `./buildSrc`
+* C'est un build comme un autre, on peut y coder en Kotlin, Groovy, Java etc..
+* En utilisant l'API Gradle ou son DSL
+* Ce que produit ce build est disponible pour Settings et tous les Projets
+
+
+[background-color="#02303A"]
+=== Organiser un build avec `buildSrc`
+
+==== DEMO
+
+=== Organiser un build avec `buildSrc`
+
+// [%step]
+* Tous les scripts de projets deviennent declaratifs
+* On peut tester la logique de build
+* Même mechanismes que le développement de plugins Gradle
+* Ou de n'importe quel code sur la JVM, même outillage
+
+
+=== Organiser plusieurs builds
+
+// [%step]
+* Partager de la logique de build avec plusieurs builds
+* Publier un plugin Gradle
+** link:https://plugins.gradle.org/[plugins.gradle.org]
+* Utiliser les composite builds
+* Combiner les deux si besoin de publier
+
+[background-color="#02303A"]
+=== Composite build logic
+
+==== DEMO
+
+=== Composite build logic
+
+// [%step]
+* Composite builds avec un peu de cérémonie
+* Très similaire à `buildSrc`
+* N-Repositories
+* Logique de build testée
+* Toujours les mêmes mechanismes et outillage
+* Rien de nouveau sous le soleil
+
+=== On n'a pas parlé des tâches ?
+
+==== Pas encore ...
+
 

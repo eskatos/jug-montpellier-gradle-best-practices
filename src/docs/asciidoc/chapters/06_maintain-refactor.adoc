@@ -6,4 +6,6 @@
 * You want tests!
 * Progressive refactoring towards best practices
 * Groovy vs. Kotlin
+* Tenir son build à jour
+** Deprecations & Build Scans
 

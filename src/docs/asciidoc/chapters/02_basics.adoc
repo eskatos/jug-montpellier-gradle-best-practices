@@ -5,8 +5,10 @@
 
 // [%step]
 * Scripts de build en Kotlin et Groovy
-* Configuration et execution de tâches
-* Résolution de dépendances
+* En fait, Gradle c'est une API Java
+* Plus un DSL en Kotlin ou Groovy
+* Configurer et executer des tâches
+* Résoudre des dépendances
 * Éviter le répéter travail
 
 image::gradle-task-dag.png[height=350px]
