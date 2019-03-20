@@ -3,7 +3,7 @@
 
 === Avant tout
 
-// [%step]
+[%step]
 * Utilisez les dernières version de JVM et de Gradle
 * Donnez assez de mémoire à Gradle
 * Le tuning de JVM et ses flags obscurs font souvent plus de mal qu'autre chose
@@ -14,7 +14,7 @@
 
 === Ne pas optimiser à l'aveugle
 
-// [%step]
+[%step]
 * Identifiez vos cas d'utilisation
 * Automatiser vos mesures
 * Identifiez le goulet d'étranglement principal
@@ -52,7 +52,7 @@ image::lifecycle.png[role=stretch]
 
 === Signes évidents de problèmes
 
-// [%step]
+[%step]
 * Startup/buildSrc/Settings > 1s
 * Temps de configuration > 10ms/projet
 * Changer une ligne de code ~= `clean build`
@@ -62,7 +62,7 @@ image::lifecycle.png[role=stretch]
 
 === Optimiser la configuration
 
-// [%step]
+[%step]
 * Quoi ?
 ** Application les plugins
 ** Evaluation les scripts de build
@@ -174,7 +174,7 @@ image::inefficient-plugins.png[role=stretch]
 
 === Plugins inefficaces
 
-// [%step]
+[%step]
 * Sur tous les projets ?
 * Est-il possible de réutiliser le travail ?
 * Exemple: lire la version depuis `git rev-parse HEAD`
@@ -209,7 +209,7 @@ image::flames.png[role=stretch]
 
 === Optimiser l'execution
 
-// [%step]
+[%step]
 * Execution des tâches
 ** Build Incrémental
 ** Build Cache
@@ -227,7 +227,7 @@ image::perf-parallel.png[role=stretch]
 
 === Compilation plus rapide
 
-// [%step]
+[%step]
 * Modularisation
 ** => Compilation avoidance on non-abi change
 ** => Parallélisation

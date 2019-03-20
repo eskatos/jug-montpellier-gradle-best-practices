@@ -3,7 +3,7 @@
 
 === Comment se sert-on de Gradle ?
 
-// [%step]
+[%step]
 * en ligne de commande
 * en intégration continue
 * depuis un IDE
@@ -12,7 +12,7 @@
 
 === `gradle build`
 
-// [%step]
+[%step]
 * Gradle est avant tout un *outil en ligne de commande*
 * `USAGE: gradle [option...] [task...]`
 * Un client qui démarre et réutilise un démon
@@ -38,7 +38,7 @@ Quelques guides pour link:https://guides.gradle.org/executing-gradle-builds-on-j
 
 === IDE => Gradle
 
-// [%step]
+[%step]
 * Certains IDEs supportent Gradle nativement
 * On importe un build Gradle directement dans l'IDE
 ** IntelliJ IDEA, CLion, Eclipse, Netbeans
@@ -62,7 +62,7 @@ Pour d'autres IDE qui ne fonctionnent qu'à partir de fichiers de configuration,
 
 Dans tous les cas, l'objectif est de configurer l'IDE
 
-// [%step]
+[%step]
 * depuis le build
 * depuis le dépôt de sources
 * pour tout le monde pareil

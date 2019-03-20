@@ -43,7 +43,7 @@ speaker {
 
 == Qui êtes-vous ?
 
-// [%step]
+[%step]
 * Qui construit pour la JVM ?
 * Qui construit pour les VM JavaScript ?
 * Qui construit du natif ?
@@ -86,7 +86,7 @@ include::chapters/09_maintainance.adoc[]
 [background-color="#02303A"]
 == En résumé
 
-// [%step]
+[%step]
 * le build ce n'est pas sale
 * le build ce n'est pas sale
 * le build ce n'est pas sale
@@ -95,7 +95,7 @@ include::chapters/09_maintainance.adoc[]
 [background-color="#02303A"]
 == En résumé
 
-// [%step]
+[%step]
 * le build c'est de l'automatisation
 * et l'automatisation c'est la vie (de développeur)
 * tout comme pour le code de production, il faut

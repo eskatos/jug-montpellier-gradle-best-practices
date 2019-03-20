@@ -5,7 +5,7 @@
 
 ==== Pourquoi ?
 
-// [%step]
+[%step]
 * Beaucoup de logique de build dans les scripts
 ** Maintenabilité :-(
 ** Réutilisation :-(
@@ -18,7 +18,7 @@
 
 ==== Comment ?
 
-// [%step]
+[%step]
 * En extrayant du code pour qu'il soit réutilisable
 * Refactoring typique
 * Extraire vers des plugins Gradle réutilisables
@@ -29,7 +29,7 @@
 
 ==== Rappel
 
-// [%step]
+[%step]
 * Démarrage
 * Initialisation (& plugins)
 * Settings (& plugins)
@@ -50,7 +50,7 @@
 
 ==== Avec `buildSrc`
 
-// [%step]
+[%step]
 * Chaque build a, par convention, un build inclu pour sa logique de build
 * `./buildSrc`
 * C'est un build comme un autre, on peut y coder en Kotlin, Groovy, Java etc..
@@ -65,7 +65,7 @@
 
 === Organiser un build avec `buildSrc`
 
-// [%step]
+[%step]
 * Tous les scripts de projets deviennent declaratifs
 * On peut tester la logique de build
 * Même mechanismes que le développement de plugins Gradle
@@ -74,7 +74,7 @@
 
 === Organiser plusieurs builds
 
-// [%step]
+[%step]
 * Partager de la logique de build avec plusieurs builds
 * Publier un plugin Gradle
 ** link:https://plugins.gradle.org/[plugins.gradle.org]
@@ -88,7 +88,7 @@
 
 === Composite build logic
 
-// [%step]
+[%step]
 * Composite builds avec un peu de cérémonie
 * Très similaire à `buildSrc`
 * N-Repositories

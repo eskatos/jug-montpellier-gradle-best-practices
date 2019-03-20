@@ -3,7 +3,7 @@
 
 === Maintenir et faire évoluer des builds
 
-// [%step]
+[%step]
 * C'est du code comme un autre
 * Il faut mettre à jour les dépendances
 * Il faut le tester

@@ -9,14 +9,14 @@ Tout le monde veut un build qui va vite™
 
 === Des builds performants
 
-// [%step]
+[%step]
 * Éviter de répéter le travail
 * Faire le travail plus vite
 
 
 === Éviter de répéter le travail
 
-// [%step]
+[%step]
 * Unité de travail: une tâche
 * `@Input*` => `Task` => `@Output*`
 * `UP_TO_DATE` - Build Incrémental
@@ -29,7 +29,7 @@ Tout le monde veut un build qui va vite™
 
 Si rien n'a changé, *aucune* tâche ne devrait être executée
 
-// [%step]
+[%step]
 * Conçu pour le développement en local
 * Comparaison des inputs
 * Comparaison des outputs
@@ -74,12 +74,12 @@ Les identifiants uniques ou timestamps sont à proscrire pour des builds reprodu
 
 === Build Cache
 
-// [%step]
+[%step]
 * est-un *stockage semi-permanent*
 * activé avec `--build-cache`
 * repose sur le build incrémental
 * stocke les outputs des tâches
-// [%step]
+[%step]
 ** l'*addresse* c'est les *inputs* de la tâche
 ** le *contenu* c'est les *outputs* de la tâche
 ** avec quelques astuces/complications
@@ -100,7 +100,7 @@ abstract class CustomTask : DefaultTask() {
 
 === Build cache partagé (remote)
 
-// [%step]
+[%step]
 * Est utile
 ** en intégration continue pour réutiliser les outputs
 *** entre les changesets, entre les agents CI, entre les jobs CI

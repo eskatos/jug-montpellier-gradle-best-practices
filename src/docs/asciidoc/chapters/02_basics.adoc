@@ -3,7 +3,7 @@
 
 === Gradle, les bases
 
-// [%step]
+[%step]
 * Scripts de build en Kotlin et Groovy
 * En fait, Gradle c'est une API Java
 * Plus un DSL en Kotlin ou Groovy
@@ -16,7 +16,7 @@ image::gradle-task-dag.png[height=350px]
 [transition=none]
 === Gradle Plugins
 
-// [%step]
+[%step]
 * Core Plugins (`java`, `jacoco`, `maven-publish` ...)
 * Community Plugins (`kotlin`, `android`, `golang`, `docker`, `asciidoctor` ...)
 
@@ -27,7 +27,7 @@ image::gradle-task-dag.png[height=350px]
 === Gradle Plugins
 
 * Des plugins Gradle contribuent
-// [%step]
+[%step]
 ** des tâches configurables et réutilisables
 ** des extensions Gradle configurables
 
@@ -38,7 +38,7 @@ image::gradle-task-dag.png[height=350px]
 === Gradle Plugins
 
 * Des plugins Gradle contribuent *un modèle à configurer*
-// [%step]
+[%step]
 ** dans les scripts de build
 ** en utilisant un DSL
 
@@ -84,7 +84,7 @@ toolChains {
 
 === Éviter de répéter le travail
 
-// [%step]
+[%step]
 * Unité de travail: une tâche
 * `@Input*` => `Task` => `@Output*`
 * `UP_TO_DATE` - Build Incrémental

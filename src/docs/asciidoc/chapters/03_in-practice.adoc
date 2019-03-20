@@ -3,7 +3,7 @@
 
 === En pratique
 
-// [%step]
+[%step]
 * Hello, Gradle World!
 * Un petit build
 * Un gros build
@@ -11,7 +11,7 @@
 
 === Créer un nouveau build
 
-// [%step]
+[%step]
 * Avec Gradle installé
 ** `gradle init`
 * Depuis une interface Web
@@ -51,7 +51,7 @@ image::itsatrap.jpg[width=75%,height=75%]
 
 === Cycle de vie d'un build
 
-// [%step]
+[%step]
 * Démarrage
 * Initialisation
 * Settings
@@ -75,7 +75,7 @@ image::itsatrap.jpg[width=75%,height=75%]
 
 === Un gros build
 
-// [%step]
+[%step]
 * Multi-projets
 ** 3 dans notre exemple
 ** 10 à 100, raisonnable et fréquent
@@ -90,7 +90,7 @@ image::itsatrap.jpg[width=75%,height=75%]
 
 === Plein de builds
 
-// [%step]
+[%step]
 * Séparer un gros build en plusieurs petits
 * Différentes équipes, cycle de livraison différent etc...
 * Mono-repo vs. multi-repo
@@ -103,15 +103,15 @@ image::itsatrap.jpg[width=75%,height=75%]
 
 === Plein de builds
 
-// [%step]
+[%step]
 * Settings
 * Composite Builds - Included Builds
-// [%step]
+[%step]
 ** Fini les `-SNAPSHOTS` !
 ** Utiles aussi pour travailler sur des librairies externes
 ** Augmente/Limite le scope disponible dans l'IDE
 * Source Dependencies
-// [%step]
+[%step]
 ** Dépendre d'un dépôt git distant
 ** Librairie ou fix non publié
 ** Sources non modifiables
@@ -119,7 +119,7 @@ image::itsatrap.jpg[width=75%,height=75%]
 
 === En pratique
 
-// [%step]
+[%step]
 * Pas de logique de build commune
 * Pas de réutilisation
 * Comment organiser sa logique de build ?

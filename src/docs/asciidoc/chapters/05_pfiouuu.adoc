@@ -9,10 +9,10 @@ C'est sans compter les tests unitaires, d'intégration, fonctionnels, bariolés 
 
 OUI ... MAIS
 
-// [%step]
+[%step]
 * Qui doit s'occuper du build ?
 * Qui se sert du build ?
-// [%step]
+[%step]
 ** Tout le monde
 ** `@dev`, `@ide`, `@ci`, `@qa`, `@ops` etc...
 ** Le produit du build c'est ce qui va en prod
@@ -22,7 +22,7 @@ OUI ... MAIS
 
 Qui doit s'occuper du build ?
 
-// [%step]
+[%step]
 * Projet solo
 ** C'est bibi !
 * Projet en équipe(s)
@@ -35,9 +35,9 @@ Qui doit s'occuper du build ?
 
 Et puis ...
 
-// [%step]
+[%step]
 * Je peux automatiser n'importe quoi
-// [%step]
+[%step]
 ** Générer des trucs et des machins
 ** Les envoyer dans les nuages
 ** Interagir avec des APIs
@@ -62,7 +62,7 @@ Et puis ...
 
 Dans tous les cas ...
 
-// [%step]
+[%step]
 * Ne pas sur-concevoir
 * KISS - C'est pas de la rocket-science non plus
 * Ou plutôt: Keep It As Simple As Possible
@@ -70,7 +70,7 @@ Dans tous les cas ...
 
 === Pfiouuuuuu
 
-// [%step]
+[%step]
 * Le build c'est un peu comme les tests
 * S'en occuper, c'est rendre service à son futur soi/utilisateur
 * Si le build est bien fait et testé

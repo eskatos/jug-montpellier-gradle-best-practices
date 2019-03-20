@@ -5,7 +5,7 @@
 
 Gradle est un outil de construction et d'automatisation.
 
-// [%step]
+[%step]
 * Gradle Build Tool
 * Tourne sur une JVM
 * Implémenté en Java
@@ -14,7 +14,7 @@ Gradle est un outil de construction et d'automatisation.
 
 === Agnostique de l'écosystème
 
-// [%step]
+[%step]
 * Écosystème JVM
 ** Java, Kotlin, Groovy, Scala, Clojure ...
 * Écosystème natif
@@ -26,7 +26,7 @@ Gradle est un outil de construction et d'automatisation.
 
 === Gradle en quelques chiffres
 
-// [%step]
+[%step]
 * >7.0M téléchargements par mois
 * https://techcrunch.com/2017/04/07/tracking-the-explosive-growth-of-open-source-software/[#17 Projet Open Source]
 * 35+ ingénieurs Gradle
@@ -44,7 +44,7 @@ La compagnie derrière Gradle.
 
 === Gradle Enterprise
 
-// [%step]
+[%step]
 * Produit commercial - Productivité des développeurs
 * *Build Scans*
 ** enregistrement persistent et partageable
@@ -65,7 +65,7 @@ image::gradle-enterprise.png[width=80%, height=80%]
 
 === Et le Build Cache ?
 
-// [%step]
+[%step]
 * Le Build Cache local est intégré à Gradle en Open Source
 ** link:https://docs.gradle.org/current/userguide/build_cache.html[`gradle --build-cache`]
 * Image docker d'un noeud de service Build Cache, non distribué
