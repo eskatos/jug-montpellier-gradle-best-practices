@@ -111,10 +111,8 @@ Gradle::
 link:https://gradle.org/[gradle.org]
 Slides::
 link:https://eskatos.github.io/jug-montpellier-gradle-best-practices[eskatos.github.io/jug-montpellier-gradle-best-practices]
-Documentation::
-link:https://docs.gradle.org/[docs.gradle.org]
-Performance guide::
-link:https://guides.gradle.org/performance[guides.gradle.org/performance]
+Example builds and slides sources::
+link:https://github.com/eskatos/jug-montpellier-gradle-best-practices[https://github.com/eskatos/jug-montpellier-gradle-best-practices]
 Slack::
 link:https://join.slack.com/t/gradle-community/shared_invite/enQtNDE3MzAwNjkxMzY0LTYwMTk0MWUwN2FiMzIzOWM3MzBjYjMxNWYzMDE1NGIwOTJkMTQ2NDEzOGM2OWIzNmU1ZTk5MjVhYjFhMTI3MmE[lien d'invitation]
 On recrute !::
