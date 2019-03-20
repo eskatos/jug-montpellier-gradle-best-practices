@@ -3,9 +3,10 @@
 
 === Maintenir et faire évoluer des builds
 
-* You want tests!
-* Progressive refactoring towards best practices
+// [%step]
+* C'est du code comme un autre
+* Il faut mettre à jour les dépendances
+* Il faut le tester
+* Il faut le refactorer petit à petit pour qu'il soit meilleur
 * Groovy vs. Kotlin
-* Tenir son build à jour
-** Deprecations & Build Scans
 
