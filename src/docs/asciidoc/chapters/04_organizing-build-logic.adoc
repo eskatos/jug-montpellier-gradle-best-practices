@@ -3,6 +3,10 @@
 
 === Organiser la logique de build
 
+TODO
+
+[.notes]
+--
 * organiser la logique de build
 ** un build, une hierarchie de projets
 ** settings
@@ -27,3 +31,5 @@
 ** mono-build vs. multi-builds
 ** included build
 ** included build logic
+--
+
