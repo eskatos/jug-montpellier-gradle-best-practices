@@ -1,0 +1,255 @@
+[background-color="#02303A"]
+== Optimiser un build
+
+=== Avant tout
+
+// [%step]
+* Utilisez les dernières version de JVM et de Gradle
+* Donnez assez de mémoire à Gradle
+* Le tuning de JVM et ses flags obscurs font souvent plus de mal qu'autre chose
+* Prenez plutôt le temps de faire des améliorations structurelles
+* Activez `--parallel` (`org.gradle.parallel=true`)
+* Activez `--build-cache` (`org.gradle.caching=true`)
+
+
+=== Ne pas optimiser à l'aveugle
+
+// [%step]
+* Identifiez vos cas d'utilisation
+* Automatiser vos mesures
+* Identifiez le goulet d'étranglement principal
+* Fixez le goulet
+* Vérifiez le fix en mesurant de nouveau
+* Répéter
+
+=== Automatisez vos mesures
+
+link:https://github.com/gradle/gradle-profiler[github.com/gradle/gradle-profiler]
+
+```
+configurationTime {
+    tasks = ["help"]
+}
+cleanBuild {
+    tasks = ["build"]
+    cleanup-tasks = ["clean"]
+}
+cachedCleanBuild {
+    tasks = ["build"]
+    cleanup-tasks = ["clean"]
+    gradle-args = ["--build-cache"]
+}
+```
+
+
+=== Où est le problème ?
+
+* Commencez par observer un build
+** `gradle --scan` ou `gradle --profile`
+
+image::lifecycle.png[role=stretch]
+
+
+=== Signes évidents de problèmes
+
+// [%step]
+* Startup/buildSrc/Settings > 1s
+* Temps de configuration > 10ms/projet
+* Changer une ligne de code ~= `clean build`
+* Un build censé être un NO-OP qui fait quelque chose
+* Long temps de GC (Garbage Collection)
+
+
+=== Optimiser la configuration
+
+// [%step]
+* Quoi ?
+** Application les plugins
+** Evaluation les scripts de build
+** Execution les callbacks (e.g. `afterEvaluate {}`)
+* Quand ?
+** `gradle help` ou `gradle tasks`
+** Synchronisation d'un IDE
+** à chaque invocation, c'est un coût fixe!
+
+=== Optimiser la configuration
+
+Principales causes de lenteur
+
+* Résolution de dépendances à la configuration
+* I/O à la configuration
+* Plugins inefficaces
+* Logique répetée
+
+
+=== Résolution de dépendances à la configuration
+
+image::depres-config-time.png[role=stretch]
+
+=== Résolution de dépendances à la configuration
+
+```kotlin
+tasks.register<Jar>("uberJar") {
+    from(sourceSets["main"].output)
+    from(configurations["runtime"].map { it.isDirectory ? it : zipTree(it) })
+    classifier = "uber-jar"
+}
+```
+
+`configurations["runtime"].map` provoque la résolution de dépendances
+
+=== Résolution de dépendances à la configuration
+
+```kotlin
+tasks.register<Jar>("uberJar") {
+    from(sourceSets["main"].output)
+    from({ configurations["runtime"].map { it.isDirectory ? it : zipTree(it) } })
+    classifier = "uber-jar"
+}
+```
+
+Préférez les évaluations paresseuses
+
+=== I/O à la configuration
+
+```kotlin
+tasks.register("projectStats") {
+    val statsFile = file("$buildDir/stats.txt")
+    statsFile.parentFile.mkdirs()
+    statsFile.writeText("Source files: ${sourceSets["main"].java.size()}")
+}
+```
+
+Attention en écrivant des tâches !
+
+=== I/O à la configuration
+
+image::io-config-time.png[role=stretch]
+
+Ce script à l'air couteux
+
+=== I/O à la configuration
+
+```kotlin
+tasks.register("projectStats") {
+    val statsFile = file("$buildDir/stats.txt")
+    inputs.files(sourceSets["main"].java)
+    outputs.file(statsFile)
+    doLast {
+        statsFile.parentFile.mkdirs()
+        statsFile.writeText("Source files: ${sourceSets["main"].java.size()}")
+    }
+}
+```
+
+Ne pas oublier `doLast {}`
+
+=== I/O à la configuration
+
+```kotlin
+abstract class ProjectStats : DefaultTask() {
+
+    @get:InputFiles
+    abstract val sources: ConfigurableFileCollection
+
+    @get:OutputFile
+    abstract val statsFile: FileProperty
+
+    @TaskAction
+    fun stats() = statsFile.get().asFile.apply {
+        parentFile.mkdirs()
+        writeText("Source files: ${sources.size()}")
+    }
+}
+
+tasks.register<ProjectStats>("projectStats") {
+    sources.from(sourceSets["main"].java)
+    statsFile.set(file("$buildDir/stats.txt))
+}
+```
+
+=== Plugins inefficaces
+
+image::inefficient-plugins.png[role=stretch]
+
+=== Plugins inefficaces
+
+// [%step]
+* Sur tous les projets ?
+* Est-il possible de réutiliser le travail ?
+* Exemple: lire la version depuis `git rev-parse HEAD`
+
+=== Plugins inefficaces
+
+```kotlin
+subprojects {
+    apply(plugin = "set-version-from-git")
+}
+```
+
+=== Plugins inefficaces
+
+```kotlin
+plugins {
+    id("set-version-from-git")
+}
+subprojects {
+    version = rootProject.version
+}
+```
+
+=== Optimiser la configuration
+
+Optimisez les algorithmes
+
+image::flames.png[role=stretch]
+
+`gradle-profiler --profile async-profiler`
+
+
+=== Optimiser l'execution
+
+// [%step]
+* Execution des tâches
+** Build Incrémental
+** Build Cache
+
+
+=== Execution parallèle
+
+Éxecution sérielle
+
+image::perf-serial.png[role=stretch]
+
+Éxecution parallèle
+
+image::perf-parallel.png[role=stretch]
+
+=== Compilation plus rapide
+
+// [%step]
+* Modularisation
+** => Compilation avoidance on non-abi change
+** => Parallélisation
+* Code découplé
+** => Compilation incrémentale plus efficace
+* Processeurs d'annotations
+** => Vérifiez bien qu'ils soient incrémentaux
+
+=== Résolution de dépendances
+
+* Dynamic versions & locking
+* Repositories
+** As few as possible
+** Filtering repositories content
+** no `mavenLocal()`
+
+=== Surveiller la performance du build
+
+* Pour qu'elle ne regresse pas
+* L'intégration continue peut alerter, voir fournir des tabeaux de bords
+* Gradle Enterprise fourni des solutions dédiées à la gestion de la performance du build
+
+image::perf-dashboard.png[role=stretch]
+
+

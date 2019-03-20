@@ -85,9 +85,8 @@ toolChains {
 === Éviter de répéter le travail
 
 // [%step]
-* Unités de travail: tâches, transformations
-* `@Input*`
-* `@Output*`
+* Unité de travail: une tâche
+* `@Input*` => `Task` => `@Output*`
 * `UP_TO_DATE` - Build Incrémental
 ** Les inputs n'ont pas changé, les outputs sont présents et inchangés
 * `FROM_CACHE` - Build Cache

@@ -65,7 +65,6 @@ speaker {
 * Organiser la logique de build
 * Des builds performants
 * Maintenir et faire évoluer des builds
-* Intégration continue
 
 
 include::chapters/00_what-is-gradle.adoc[]
@@ -78,9 +77,10 @@ include::chapters/04_organizing-build-logic.adoc[]
 == Interlude
 
 include::chapters/05_pfiouuu.adoc[]
-include::chapters/06_ci.adoc[]
+// include::chapters/06_ci.adoc[]
 include::chapters/07_performance.adoc[]
-include::chapters/08_maintainance.adoc[]
+include::chapters/08_optimization.adoc[]
+include::chapters/09_maintainance.adoc[]
 
 
 [background-color="#02303A"]

@@ -7,145 +7,59 @@ image::compiling.png[width=50%, height=50%]
 
 Tout le monde veut un build qui va vite™
 
-
-=== Avant tout
-
-// [%step]
-* Utilisez les dernières version de JVM et de Gradle
-* Donnez assez de mémoire à Gradle
-* Le tuning de JVM et ses flags obscurs font souvent plus de mal qu'autre chose
-* Prenez plutôt le temps de faire des améliorations structurelles
-* Activez `--parallel` (`org.gradle.parallel=true`)
-* Activez `--build-cache` (`org.gradle.caching=true`)
-
-
-=== Mesurer, fixer, mesurer ...
-
-Ou comment ne pas optimiser à l'aveugle
+=== Des builds performants
 
 // [%step]
-* Identifiez vos cas d'utilisation
-* Automatiser vos mesures
-* Identifiez le goulet d'étranglement principal
-* Fixez le goulet
-* Vérifiez le fix en mesurant de nouveau
-* Répéter
-
-=== Automatisez vos mesures
-
-link:https://github.com/gradle/gradle-profiler[github.com/gradle/gradle-profiler]
-
-```
-configurationTime {
-    tasks = ["help"]
-}
-cleanBuild {
-    tasks = ["build"]
-    cleanup-tasks = ["clean"]
-}
-cachedCleanBuild {
-    tasks = ["build"]
-    cleanup-tasks = ["clean"]
-    gradle-args = ["--build-cache"]
-}
-```
+* Éviter de répéter le travail
+* Faire le travail plus vite
 
 
-=== Où est le problème ?
+=== Éviter de répéter le travail
 
 // [%step]
-* Commencez par observer un build
-** `gradle --scan` ou `gradle --profile`
-
-image::blank.png[width=60%, height=60%]
-
-=== Où est le problème ?
-
-* Commencez par observer un build
-** `gradle --scan` ou `gradle --profile`
-
-image::lifecycle.png[width=60%, height=60%]
+* Unité de travail: une tâche
+* `@Input*` => `Task` => `@Output*`
+* `UP_TO_DATE` - Build Incrémental
+** Les inputs n'ont pas changé, les outputs sont présents et inchangés
+* `FROM_CACHE` - Build Cache
+** Les inputs n'ont pas changé, les outputs ont été rapatrié depuis le cache
 
 
-=== Signes évidents de problèmes
-
-// [%step]
-* Startup/buildSrc/Settings > 1s
-* Temps de configuration > 10ms/projet
-* Changer une ligne de code ~= `clean build`
-* Un build censé être un NO-OP qui fait quelque chose
-* Long temps de GC (Garbage Collection)
-
-
-=== Optimiser la configuration
-
-// [%step]
-* Quoi ?
-** Application les plugins
-** Evaluation les scripts de build
-** Execution les callbacks (e.g. `afterEvaluate {}`)
-* Quand ?
-** `gradle help` ou `gradle tasks`
-** Synchronisation d'un IDE
-** à chaque invocation, c'est un coût fixe!
-
-=== Optimiser la configuration
-
-Principales causes de lenteur
-
-* Résolution de dépendances à la configuration
-* I/O à la configuration
-* Plugins inefficaces
-* Logique répetée
-
-[background-color="#02303A"]
-=== Optimiser la configuration
-
-En pratique!
-
-
-=== Optimiser la configuration
-
-Conseils structurels
-
-* utilisez `buildSrc`
-* compilez statiquement votre logique de build
-* gardez vos scripts de build déclaratifs
-
-=== Optimiser la configuration
-
-Optimisez les algorithmes
-
-image::flames.png[width=80%, height=80%]
-
-
-`gradle-profiler --profile async-profiler`
-
-
-=== Optimiser l'execution
-
-// [%step]
-* Execution des tâches
-** UP_TO_DATE
-** FROM_CACHE
-** Incremental inputs
-** Parallélisme et Worker API
-
-
-=== Builds incrémentaux
-
-image::perf-incremental.png[width=80%, height=80%]
+=== Build incrémental
 
 Si rien n'a changé, *aucune* tâche ne devrait être executée
 
-=== Builds incrémentaux
+// [%step]
+* Conçu pour le développement en local
+* Comparaison des inputs
+* Comparaison des outputs
+* Évite d'executer une tâche
 
-image::perf-volatile-inputs.png[width=80%, height=80%]
 
-Trouvez les inputs volatiles
+=== Build incrémental
 
+```kotlin
+abstract class CustomTask : DefaultTask() {
 
-=== UUID anyone?
+    @get:InputDirectory
+    abstract val sourceDirectory: DirectoryProperty
+
+    @get:OutputFile
+    abstract val outputFile: FileProperty
+
+    // ...
+}
+```
+
+=== Build incrémental
+
+* Limitations
+** Fonctionne localement uniquement
+** Optimisé pour des changements incrémentaux
+* Pièges
+** Inputs volatiles (identifiants uniques, timestamps, ordre non stable)
+
+=== Inputs volatiles
 
 ```kotlin
 tasks.jar {
@@ -157,48 +71,73 @@ tasks.jar {
 
 Les identifiants uniques ou timestamps sont à proscrire pour des builds reproductibles et performants!
 
-=== Gradle Build Cache
 
-TDB
-
-* Traps!
-** inputs volatiles (identifiants uniques, timestamps, ordre non stable)
-** chemins absolus
-** line separators
-
-=== Execution parallèle
-
-Éxecution sérielle
-
-image::perf-serial.png[width=80%, height=80%]
-
-Éxecution parallèle
-
-image::perf-parallel.png[width=80%, height=80%]
-
-=== Compilation plus rapide
+=== Build Cache
 
 // [%step]
-* Modularisation
-** => Compilation avoidance on non-abi change
-** => Parallélisation
-* Code découplé
-** => Compilation incrémentale plus efficace
-* Processeurs d'annotations
-** => Vérifiez bien qu'ils soient incrémentaux
+* est-un *stockage semi-permanent*
+* activé avec `--build-cache`
+* repose sur le build incrémental
+* stocke les outputs des tâches
+// [%step]
+** l'*addresse* c'est les *inputs* de la tâche
+** le *contenu* c'est les *outputs* de la tâche
+** avec quelques astuces/complications
 
-=== Résolution de dépendances
+=== Build cache local
 
-* Dynamic versions & locking
-* Repositories
-** As few as possible
-** Filtering repositories content
-** no `mavenLocal()`
+```kotlin
+@CacheableTask
+abstract class CustomTask : DefaultTask() {
+    // ...
+}
+```
 
-=== Surveiller la performance du build
+* Est utile pour
+** travailler sur des branches
+** `git bisect`
+** `clean` accidentel :-)
 
-* Pour qu'elle ne regresse pas
-* L'intégration continue peut alerter, voir fournir des tabeaux de bords
-* Gradle Enterprise fourni des solutions dédiées à la gestion de la performance du build
+=== Build cache partagé (remote)
 
-image::perf-dashboard.png[width=80%, height=80%]
+// [%step]
+* Est utile
+** en intégration continue pour réutiliser les outputs
+*** entre les changesets, entre les agents CI, entre les jobs CI
+** En developpement
+*** pas besoin de reconstruire les changements des autres
+* Meilleure stratégie
+** seule la CI pousse les outputs dans le cache partagé
+
+
+=== Build cache - Les pièges
+
+* Inputs volatiles (identifiants uniques, timestamps, ordre non stable)
+* Chemins absolus - "Relocatability"
+* Différence de plateformes - Line separators
+
+```kotlin
+abstract class CustomTask : DefaultTask() {
+
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val sourceDirectory: DirectoryProperty
+    // ...
+}
+```
+
+=== Build cache
+
+[background-color="#02303A"]
+=== Des tâches performantes
+
+==== DEMO
+
+=== Des tâches performantes
+
+* La clé c'est les inputs et outputs
+* Déclarer les bonnes meta-données
+* Les tests de tâches aident beaucoup à s'assurer que ça fonctionne
+
+
+
