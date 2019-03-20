@@ -3,7 +3,9 @@
 
 === Pfiouuuuu
 
-Mais, j'ai déjà assez à faire avec le code de production! et c'est sans compter les tests unitaires, d'intégration, fonctionnels, bariolés ...
+Mais, j'ai déjà assez à faire avec le code de production!
+
+C'est sans compter les tests unitaires, d'intégration, fonctionnels, bariolés ...
 
 OUI ... MAIS
 
@@ -27,7 +29,7 @@ Qui doit s'occuper du build ?
 ** Tout le monde, éventuellement un build-master/team
 * Grandes organisations
 ** Idéalement un build-master ou une build-team, pour l'uniformité et la réutilisation
-* YMMV - Mais il faut s'en occuper
+* YMMV - Mais il faut s'en occuper, ça n'a pas à être pénible
 
 === Pfiouuuuuu
 
@@ -40,7 +42,7 @@ Et puis ...
 ** Les envoyer dans les nuages
 ** Interagir avec des APIs
 ** Déployer sur les ordinateurs d'un autre (aka. le Cloug™)
-* Le build c'est aussi un bon moyen de rapprocher les Devs des Ops (hein?)
+* C'est un bon moyen de réduire la fracture entre les Devs des Ops (hein?)
 
 [transition=none]
 [background-image="troll.jpg"]
@@ -54,6 +56,16 @@ Et puis ...
 ** Interagir avec des APIs
 ** Déployer sur les ordinateurs d'un autre (aka. le Cloug™)
 * Le build c'est aussi un bon moyen de rapprocher les Devs des Ops (hein?)
+
+
+=== Pfiouuuuuu
+
+Dans tous les cas ...
+
+// [%step]
+* Ne pas sur-concevoir
+* KISS - C'est pas de la rocket-science non plus
+* Ou plutôt: Keep It As Simple As Possible
 
 
 === Pfiouuuuuu

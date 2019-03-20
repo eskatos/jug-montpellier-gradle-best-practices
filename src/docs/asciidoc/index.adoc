@@ -78,9 +78,9 @@ include::chapters/04_organizing-build-logic.adoc[]
 == Interlude
 
 include::chapters/05_pfiouuu.adoc[]
-include::chapters/05_performant-builds.adoc[]
-include::chapters/06_maintain-refactor.adoc[]
-include::chapters/07_continuous-builds.adoc[]
+include::chapters/06_ci.adoc[]
+include::chapters/07_performance.adoc[]
+include::chapters/08_maintainance.adoc[]
 
 
 [background-color="#02303A"]
