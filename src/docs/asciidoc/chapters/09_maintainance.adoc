@@ -8,5 +8,4 @@
 * Il faut mettre à jour les dépendances
 * Il faut le tester
 * Il faut le refactorer petit à petit pour qu'il soit meilleur
-* Groovy vs. Kotlin
 
