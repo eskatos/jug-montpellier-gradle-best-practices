@@ -116,7 +116,3 @@ link:https://gradle.com/careers/[gradle.com/careers]
 [%notitle]
 == Merci
 
-
-// == A screencast
-// screencast:step1[]
-

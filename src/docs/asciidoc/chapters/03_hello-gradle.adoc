@@ -18,6 +18,23 @@
 
 screencast:hello-gradle[]
 
+=== Baby steps
+
+* appliquer un plugin
+** base
+** Tâches clean, assemble, check et build
+** Convention sur laquelle les autres plugins reposent
+
+* Tâches
+** ajouter une tâche d'un type existant et la configurer
+** ajouter une tâche custom
+** dependance entre tâches
+
+* Extensions
+* base {}
+
+
+
 === Ajouter des tâches
 
 ```kotlin

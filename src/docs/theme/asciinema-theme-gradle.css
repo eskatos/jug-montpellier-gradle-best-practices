@@ -1,13 +1,13 @@
 .asciinema-theme-gradle .asciinema-terminal {
-    color: #657b83; /* default text color */
-    background-color: #fdf6e3; /* terminal background color */
-    border-color: #fdf6e3;
+    color: #02303A; /* default text color */
+    background-color: #F7F7F8; /* terminal background color */
+    border-color: #02303A;
 }
 .asciinema-theme-gradle .fg-bg { /* inverse for default text color */
-    color: #fdf6e3;
+    color: #F7F7F8;
 }
 .asciinema-theme-gradle .bg-fg { /* inverse for terminal background color */
-    background-color: #657b83;
+    background-color: #02303A;
 }
 .asciinema-theme-gradle .fg-0 {
     color: #073642;
@@ -70,7 +70,7 @@
     background-color: #cb4b16;
 }
 .asciinema-theme-gradle .fg-10 {
-    color: #586e75;
+    color: #2dafc7;
 }
 .asciinema-theme-gradle .bg-10 {
     background-color: #586e75;

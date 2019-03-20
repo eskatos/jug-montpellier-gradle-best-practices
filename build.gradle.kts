@@ -1,5 +1,5 @@
 plugins {
-    org.gradle.presentation.asciidoctor
+    id("org.gradle.presentation.asciidoctor")
 }
 
 presentation {
