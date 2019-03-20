@@ -44,25 +44,34 @@ speaker {
 == Qui êtes-vous ?
 
 // [%step]
-* Qui a déjà utilisé un build Gradle ?
+* Qui construit pour la JVM ?
+* Qui construit pour les VM JavaScript ?
+* Qui construit du natif ?
+* Autre chose ? Quoi ?
+* Qui se sert uniquement de Gradle au boulot ?
+* Qui se sert uniquement de Maven au boulot ?
+* Qui se sert des deux au boulot ?
+* Qui se sert d'autres outils de build ? lesquels ?
 * Qui a déjà modifié/écrit un build Gradle ?
-// TODO add more
+
 
 [background-color="#02303A"]
 == Agenda
 
 * Gradle, c'est quoi ?
-* Hello Gradle World!
+* Comment on s'en sert ?
+* Basique!
+* En pratique
 * Organiser la logique de build
 * Des builds performants
 * Maintenir et faire évoluer des builds
 * Intégration continue
 
 
-include::chapters/00_about-gradle.adoc[]
-include::chapters/01_in-a-nutshell.adoc[]
-include::chapters/02_using-gradle.adoc[]
-include::chapters/03_hello-gradle.adoc[]
+include::chapters/00_what-is-gradle.adoc[]
+include::chapters/01_using-gradle.adoc[]
+include::chapters/02_basics.adoc[]
+include::chapters/03_in-practice.adoc[]
 include::chapters/04_organizing-build-logic.adoc[]
 
 [background-color="#02303A"]

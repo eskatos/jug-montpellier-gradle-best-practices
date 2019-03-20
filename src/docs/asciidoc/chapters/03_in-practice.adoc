@@ -1,0 +1,115 @@
+[background-color="#02303A"]
+== En pratique
+
+=== En pratique
+
+// [%step]
+* Hello, Gradle World!
+* Un petit build
+* Un gros build
+* Plein de builds
+
+=== Créer un nouveau build
+
+// [%step]
+* Avec Gradle installé
+** `gradle init`
+* Depuis une interface Web
+** https://gradle-initializr.cleverapps.io/
+
+=== `gradle init`
+
+screencast:hello-gradle[]
+
+[background-color="#02303A"]
+=== Un petit build
+
+==== DEMO
+
+[.notes]
+--
+* `plugins { base }`
+** Tâches
+*** `gradle tasks`
+*** `gradle help --task <taskName>`
+** Extensions
+* cycle de vie du build
+* configuration vs. execution
+--
+
+=== Un petit build
+
+* Un seul projet
+* Les plugins contribuent un modèle qui se configure via le DSL
+* Configuration vs. Execution
+
+
+=== Configuration vs. Execution
+
+image::itsatrap.jpg[width=75%,height=75%]
+
+
+[background-color="#02303A"]
+=== Un gros build
+
+==== DEMO
+
+[.notes]
+--
+* Multi-projets
+** Settings
+** Hiérarchie de projets
+** Cycle de vie du build
+** Projet racine
+--
+
+=== Un gros build
+
+// [%step]
+* Multi-projets
+** 3 dans notre exemple
+** 10 à 100, raisonnable et fréquent
+** 500 et plus, moins fréquent mais ça existe
+* Hiérachie de projets
+** Configuration
+** Configurer les sous-projets
+
+
+[background-color="#02303A"]
+=== Plein de builds
+
+=== Plein de builds
+
+// [%step]
+* Séparer un gros build en plusieurs petits
+* Différentes équipes, cycle de livraison différent etc...
+* Mono-repo vs. Multi-repo
+
+[background-color="#02303A"]
+=== Plein de builds
+
+==== DEMO
+
+=== Plein de builds
+
+// [%step]
+* Settings
+* Composite Builds - Included Builds
+// [%step]
+** Fini les `-SNAPSHOTS` !
+** Utiles aussi pour travailler sur des librairies externes
+** Augmente/Limite le scope disponible dans l'IDE
+* Source Dependencies
+// [%step]
+** Dépendre d'un dépôt git distant
+** Librairie ou fix non publié
+** Sources non modifiables
+
+
+=== En pratique
+
+// [%step]
+* Pas de logique de build commune
+* Pas de réutilisation
+* Comment organiser sa logique de build ?
+

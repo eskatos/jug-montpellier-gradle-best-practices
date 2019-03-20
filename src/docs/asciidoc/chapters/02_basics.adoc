@@ -1,7 +1,7 @@
 [background-color="#02303A"]
-== Gradle en quelques points clés
+== Gradle, les bases
 
-=== Gradle en quelques points clés
+=== Gradle, les bases
 
 // [%step]
 * Scripts de build en Kotlin et Groovy
@@ -43,7 +43,7 @@ image::gradle-task-dag.png[height=350px]
 image::gradle-task-dag.png[height=350px]
 
 
-=== A Java library
+=== Une librairie Java
 
 [source,groovy]
 ----
@@ -61,7 +61,8 @@ tasks.withType<JavaCompile> {
 }
 ----
 
-=== A native app
+
+=== Une application C++
 
 [source,groovy]
 ----
@@ -77,3 +78,18 @@ toolChains {
     // ...
 }
 ----
+
+
+=== Éviter de répéter le travail
+
+// [%step]
+* Unités de travail: tâches, transformations
+* `@Input*`
+* `@Output*`
+* `UP_TO_DATE` - Build Incrémental
+** Les inputs n'ont pas changé, les outputs sont présents et inchangés
+* `FROM_CACHE` - Build Cache
+** Les inputs n'ont pas changé, les outputs ont été rapatrié depuis le cache
+
+
+
